@@ -40,8 +40,7 @@ PACKAGES=(
     # Game Utils
     "gamemode" "lib32-gamemode" "mangohud" "lib32-mangohud" "goverlay"
     "vkbasalt" "lib32-vkbasalt" "cabextract" "ttf-liberation" "umu-launcher"
-    "protontricks" "openal" "lib32-openal" "lib32-mpg123" "lib32-gtk3"
-    "lib32-ocl-icd" "winetricks"
+    "protontricks" "lib32-gtk3" "lib32-ocl-icd" "winetricks"
     # Steam & Gamescope
     "steam" "steam-devices" "gamescope" "lib32-gamescope" "noto-fonts"
 )
