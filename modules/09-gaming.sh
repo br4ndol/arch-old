@@ -38,11 +38,11 @@ PACKAGES=(
     # ASUS ROG Tools
     "asusctl" "rog-control-center"
     # Game Utils
-    "gamemode" "lib32-gamemode" "mangohud" "lib32-mangohud" "goverlay"
-    "vkbasalt" "lib32-vkbasalt" "cabextract" "ttf-liberation" "umu-launcher"
-    "protontricks" "lib32-gtk3" "lib32-ocl-icd" "winetricks"
+#    "gamemode" "lib32-gamemode" "mangohud" "lib32-mangohud" "goverlay"
+#    "vkbasalt" "lib32-vkbasalt" "cabextract" "ttf-liberation" "umu-launcher"
+#    "protontricks" "lib32-gtk3" "lib32-ocl-icd" "winetricks"
     # Steam & Gamescope
-    "steam" "steam-devices" "gamescope" "lib32-gamescope" "noto-fonts"
+#    "steam" "steam-devices" "gamescope" "lib32-gamescope" "noto-fonts"
 )
 
 # --- Lista de Flatpaks ---
@@ -76,52 +76,53 @@ else
 fi
 
 # --- 3. Agregar usuario al grupo Gamemode ---
-msg "Verificando grupo 'gamemode' para el usuario $TARGET_USER..."
-if getent group gamemode &>/dev/null; then
-    if ! id -nG "$TARGET_USER" | grep -qw "gamemode"; then
-        usermod -aG gamemode "$TARGET_USER"
-        success "Usuario $TARGET_USER añadido al grupo gamemode."
-    else
-        msg "El usuario $TARGET_USER ya pertenece al grupo gamemode."
-    fi
-fi
+
+#msg "Verificando grupo 'gamemode' para el usuario $TARGET_USER..."
+#if getent group gamemode &>/dev/null; then
+#    if ! id -nG "$TARGET_USER" | grep -qw "gamemode"; then
+#        usermod -aG gamemode "$TARGET_USER"
+#        success "Usuario $TARGET_USER añadido al grupo gamemode."
+#    else
+#        msg "El usuario $TARGET_USER ya pertenece al grupo gamemode."
+#    fi
+#fi
 
 # --- 4. Configurar GameMode (Scripts y gamemode.ini) ---
-msg "Configurando scripts y archivo de configuración para GameMode..."
-GAMEMODE_SCRIPTS_DIR="$TARGET_HOME/.config/gamemode"
-GAMEMODE_INI_FILE="$TARGET_HOME/.config/gamemode.ini"
-GAMEMODE_SRC_DIR="${SCRIPT_DIR}/../configs/gamemode"
+#msg "Configurando scripts y archivo de configuración para GameMode..."
+#GAMEMODE_SCRIPTS_DIR="$TARGET_HOME/.config/gamemode"
+#GAMEMODE_INI_FILE="$TARGET_HOME/.config/gamemode.ini"
+#GAMEMODE_SRC_DIR="${SCRIPT_DIR}/../configs/gamemode"
 
 # Crear directorio para almacenar los scripts auxiliaries
-mkdir -p "$GAMEMODE_SCRIPTS_DIR"
+#mkdir -p "$GAMEMODE_SCRIPTS_DIR"
 
 # Copiar scripts de inicio y fin
-if [ -f "$GAMEMODE_SRC_DIR/gamemode-start.sh" ] && [ -f "$GAMEMODE_SRC_DIR/gamemode-end.sh" ]; then
-    cp -f "$GAMEMODE_SRC_DIR/gamemode-start.sh" "$GAMEMODE_SCRIPTS_DIR/gamemode-start.sh"
-    cp -f "$GAMEMODE_SRC_DIR/gamemode-end.sh" "$GAMEMODE_SCRIPTS_DIR/gamemode-end.sh"
+#if [ -f "$GAMEMODE_SRC_DIR/gamemode-start.sh" ] && [ -f "$GAMEMODE_SRC_DIR/gamemode-end.sh" ]; then
+#    cp -f "$GAMEMODE_SRC_DIR/gamemode-start.sh" "$GAMEMODE_SCRIPTS_DIR/gamemode-start.sh"
+#    cp -f "$GAMEMODE_SRC_DIR/gamemode-end.sh" "$GAMEMODE_SCRIPTS_DIR/gamemode-end.sh"
     
     # Asignar permisos de ejecución a los scripts
-    chmod +x "$GAMEMODE_SCRIPTS_DIR/gamemode-start.sh" "$GAMEMODE_SCRIPTS_DIR/gamemode-end.sh"
-    success "Scripts gamemode-start.sh y gamemode-end.sh desplegados con permisos de ejecución."
-else
-    error "No se encontraron los scripts de GameMode en $GAMEMODE_SRC_DIR"
-    exit 1
-fi
+#    chmod +x "$GAMEMODE_SCRIPTS_DIR/gamemode-start.sh" "$GAMEMODE_SCRIPTS_DIR/gamemode-end.sh"
+#    success "Scripts gamemode-start.sh y gamemode-end.sh desplegados con permisos de ejecución."
+#else
+#    error "No se encontraron los scripts de GameMode en $GAMEMODE_SRC_DIR"
+#    exit 1
+#fi
 
 # Generar ~/.config/gamemode.ini apuntando a la ubicación de los scripts
-cat > "$GAMEMODE_INI_FILE" <<EOF
-[custom]
-start=$GAMEMODE_SCRIPTS_DIR/gamemode-start.sh
-end=$GAMEMODE_SCRIPTS_DIR/gamemode-end.sh
-EOF
+#cat > "$GAMEMODE_INI_FILE" <<EOF
+#[custom]
+#start=$GAMEMODE_SCRIPTS_DIR/gamemode-start.sh
+#end=$GAMEMODE_SCRIPTS_DIR/gamemode-end.sh
+#EOF
 
 # Asignar permisos y propietario correcto
-chmod 644 "$GAMEMODE_INI_FILE"
-chown -R "$TARGET_USER:$TARGET_USER" "$GAMEMODE_SCRIPTS_DIR" "$GAMEMODE_INI_FILE"
-success "Archivo gamemode.ini configurado correctamente en $GAMEMODE_INI_FILE."
+#chmod 644 "$GAMEMODE_INI_FILE"
+#chown -R "$TARGET_USER:$TARGET_USER" "$GAMEMODE_SCRIPTS_DIR" "$GAMEMODE_INI_FILE"
+#success "Archivo gamemode.ini configurado correctamente en $GAMEMODE_INI_FILE."
 
 # --- 5. Instalación de Flatpaks ---
-msg "Verificando e instalando Flatpaks para juegos..."
-instalar_flatpak "${FLATPAKS[@]}"
+#msg "Verificando e instalando Flatpaks para juegos..."
+#instalar_flatpak "${FLATPAKS[@]}"
 
 success "🎉 ¡Módulo de Juegos y Rendimiento completado con éxito!"
