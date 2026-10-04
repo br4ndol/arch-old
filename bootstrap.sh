@@ -41,8 +41,8 @@ read -rp "Zona horaria [America/Santo_Domingo]: " TIME_ZONE
 TIME_ZONE="${TIME_ZONE:-America/Santo_Domingo}"
 
 # URL del repositorio (opcional, con valor por defecto)
-read -rp "URL del repositorio [https://github.com/br4ndol/arch.git]: " REPO_URL
-REPO_URL="${REPO_URL:-https://github.com/br4ndol/arch.git}"
+read -rp "URL del repositorio [https://github.com/br4ndol/arch-old.git]: " REPO_URL
+REPO_URL="${REPO_URL:-https://github.com/br4ndol/arch-old.git}"
 
 # --- Variables de Configuración (ahora dinámicas) ---
 export LOCALE="en_US.UTF-8 UTF-8"  # Inglés (fijo, como pediste)
