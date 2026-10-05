@@ -14,7 +14,7 @@ To verify the partitions, run:
 To start the script:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/br4ndol/arch/main/bootstrap.sh -o bootstrap.sh
+curl -sL https://raw.githubusercontent.com/br4ndol/arch-old/main/bootstrap.sh -o bootstrap.sh
 chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
